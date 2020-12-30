@@ -13,7 +13,7 @@ async function getVideo(req,res) {
     try {
         var filename = `${Date.now()}`;
         res.header ('Content-Disposition', `attachment; filename = ${filename}.${format}`);
-        ytdl(url, {format: format, quality: 'highest', filter: `${format === "mp4" ? 'audioandvideo' : 'audioonly'}`}).pipe(res);
+        ytdl(url, {format: format, quality: 'highest', filter: 'audioonly'}).pipe(res);
     } catch (error) {
         console.log(error);
         return res.json({error: 'Ocorreu um erro ao baixar o video'});
